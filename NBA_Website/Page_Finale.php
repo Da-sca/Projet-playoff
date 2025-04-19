@@ -1,0 +1,73 @@
+<?php
+include 'functions.php';
+include 'Finale.php';
+
+$conn = connectDatabase();
+checkAndCreateMatches($conn, 15, 'automatic_match_Final');
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_match'])) {
+    $quart_scores = [
+        'q1_e1' => intval($_POST['q1_e1']),
+        'q1_e2' => intval($_POST['q1_e2']),
+        'q2_e1' => intval($_POST['q2_e1']),
+        'q2_e2' => intval($_POST['q2_e2']),
+        'q3_e1' => intval($_POST['q3_e1']),
+        'q3_e2' => intval($_POST['q3_e2']),
+        'q4_e1' => intval($_POST['q4_e1']),
+        'q4_e2' => intval($_POST['q4_e2']),
+    ];
+
+    // Pass the winner only if it is set
+    $winner = isset($_POST['winner']) ? $_POST['winner'] : null;
+
+    updateMatch(
+        $conn,
+        intval($_POST['match_id']),
+        $_POST['Date_match'],
+        intval($_POST['id_arbitre']),
+        intval($_POST['score_equipe1']),
+        intval($_POST['score_equipe2']),
+        $winner,
+        $quart_scores
+    );
+}
+
+$result = getMatches($conn, 4);
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finales</title>
+    <link rel="stylesheet" href="Page_Finale.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="acceuil.php">Accueil</a></li>
+                <li><a href="Page_Huitieme_Finale.php">Huitièmes de Finale</a></li>
+                <li><a href="Page_Quart_Finale.php">Quarts de Finale</a></li>
+                <li><a href="Page_Demi_Finale.php">Demi-Finales</a></li>
+                <li><a href="Page_Finale.php" class="active">Finales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Finales</h1>
+        <form method="POST">
+            <?php
+            displayMatches($result, $conn);
+            mysqli_close($conn);
+            ?>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NBA Playoffs</p>
+    </footer>
+</body>
+</html>

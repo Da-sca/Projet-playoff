@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchs - Phases Finales</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: url('class_bg.jpg') no-repeat center center/cover;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background: #ff9800;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+            gap: 30px; /* Espacement entre les cartes */
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 20px rgba(255, 165, 0, 0.8);
+        }
+
+        .card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #ff9800;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Acceuil_user.php">Accueil</a></li>
+                <li><a href="visualisez_equipe.php">Équipes</a></li>
+                <li><a href="Match_user.php" class="active">Matchs</a></li>
+                <li><a href="Classement_user.php">Classement</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Phases Finales - NBA</h1>
+        <div class="card-container">
+            <div class="card">
+                <img src="huitieme.jpg" alt="Huitièmes de Finale">
+                <a href="User_match_huitieme.php">Huitièmes de Finale</a>
+            </div>
+            <div class="card">
+                <img src="quart.jpg" alt="Quarts de Finale">
+                <a href="User_match_quart.php">Quarts de Finale</a>
+            </div>
+            <div class="card">
+                <img src="demi.jpg" alt="Demi-Finales">
+                <a href="User_match_demi_finale.php">Demi-Finales</a>
+            </div>
+            <div class="card">
+                <img src="finale.jpg" alt="Finales">
+                <a href="User_match_finale.php">Finales</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NBA Playoffs</p>
+    </footer>
+</body>
+</html>
